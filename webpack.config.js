@@ -6,5 +6,17 @@ module.exports = {
     path: __dirname + "/dist",
     filename: "bundle.js",
   },
-  plugins: [new HTMLWebpackPlugin()],
+  module: {
+    rules: [
+      {
+        test: /.css$/,
+        use: ["style-loader", "css-loader"],
+      },
+    ],
+  },
+  plugins: [
+    new HTMLWebpackPlugin({
+      template: "./src/index.html",
+    }),
+  ],
 };
